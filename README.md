@@ -22,4 +22,12 @@ To get into the VM, just
 The Ruby script needs to be run inside the VM.
 
     cd /vagrant
+    chmod +x upwork.rb
     ./upwork.rb
+
+This does the following:
+
+- Installs the Prerequisites
+- Downloads and installs the Upwork deb
+- Copies the binary and supporting libs
+- Builds the AppImage
