@@ -7,6 +7,7 @@ Scripts to automate building an AppImage of the Upwork client on an Ubuntu VM, f
 - git, obviously
 - Vagrant
 - Ruby (installed when you build the Trusty VM)
+- Bundler (gem install bundler)
 
 # building
 
@@ -19,10 +20,12 @@ To get into the VM, just
 
     vagrant ssh
 
-The Ruby script needs to be run inside the VM.
+The Ruby script needs to be run inside the VM as root (sudo -s).
 
     cd /vagrant
     chmod +x upwork.rb
+    gem install bundler
+    bundle install
     ./upwork.rb
 
 This does the following:

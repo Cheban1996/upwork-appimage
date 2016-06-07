@@ -1,2 +1,5 @@
 .vagrant/
 Vagrantfile
+Upwork.AppDir/
+*.lock
+*.swp
