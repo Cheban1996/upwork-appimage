@@ -1,0 +1,6 @@
+[submodule "AppImageKit"]
+	path = AppImageKit
+	url = https://github.com/probonopd/AppImageKit
+[submodule "AppImages"]
+	path = AppImages
+	url = https://github.com/probonopd/AppImages
