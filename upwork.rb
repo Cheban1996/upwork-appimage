@@ -22,6 +22,7 @@ class Upimage
     @usr ="#{@foldername}/usr"
     @bin="#{@usr}/bin"
     @lib="#{@usr}/lib"
+    @blacklist = []
   end
 
   def clean
@@ -42,12 +43,23 @@ class Upimage
     File.open(@desktop, "w") {|f| f.write(@deskfile)}
   end
 
+  def read_blacklist
+    raw_blacklist = File.readlines(Dir.pwd + "/AppImages/excludelist")
+    @blacklist = raw_blacklist.grep(/\.so/)
+    @blacklist.reject!{|f| f =~ /^#/ or f =~ /^\n/ or f =~ /nss/}
+  end
+  
   def get_libs
+    self.read_blacklist
     raw_libs = `ldd /usr/share/upwork/upwork`
     split_libs = raw_libs.split("\n")
-    split_libs.each do |f|
-      puts f if f =~ /x86_64/
+    split_libs.select! {|f| f =~ /x86_64/}
+    @blacklist.each do |f|
+      split_libs.reject! {|g| g =~ f}
     end
+    split_libs.each{|f| puts f.split }
+    end
+
   end
 
   def download
@@ -136,12 +148,12 @@ upwork.clean # Remove old cruft if it's still around
 #
 #system "dpkg -i #{upwork.debname}"
 
-puts "Now building AppImageKit"
-
-curdir = Dir.pwd
-Dir.chdir("#{curdir}/AppImageKit")
-['git reset --hard', 'git clean -f -d', 'cmake .', 'make'].each {|f| system f}
-Dir.chdir(curdir)
+#puts "Now building AppImageKit"
+#
+#curdir = Dir.pwd
+#Dir.chdir("#{curdir}/AppImageKit")
+#['git reset --hard', 'git clean -f -d', 'cmake .', 'make'].each {|f| system f}
+#Dir.chdir(curdir)
 
 upwork.makedir
 upwork.deskfile
