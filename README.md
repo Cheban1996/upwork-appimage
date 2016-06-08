@@ -1,3 +1,7 @@
+# Releases
+
+[Binary releases](https://github.com/regeya/upwork-appimage/releases).
+
 # upwork-appimage
 
 Scripts to automate building an AppImage of the Upwork client on an Ubuntu VM, for running on other Linux distributions.  I chose Ruby because my shell-fu is weak.  While downloading a binary file may appeal to some, others might not want that option.  For them, there's this script.
