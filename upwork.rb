@@ -29,7 +29,7 @@ class Upimage
   def clean
     rm(@appname) if File.exists?(@appname)
     rm_rf(@foldername) if File.exists?(@foldername)
-    rm(@debname) if File.exists?(@debname)
+    rm(@debname) if File.exists?(@debname) and @fetch=True
     rm(@filename) if File.exists?(@filename)
   end
 
