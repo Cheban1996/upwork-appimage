@@ -28,7 +28,7 @@ class Upimage
   def clean
     rm(@appname) if File.exists?(@appname)
     rm_rf(@foldername) if File.exists?(@foldername)
-    rm(@debname) if File.exists?(@debname) and @fetch=True
+    rm(@debname) if File.exists?(@debname)
     rm(@filename) if File.exists?(@filename)
   end
 
@@ -66,6 +66,8 @@ class Upimage
     lib_list.each {|f| cp f, @lib}
     Dir.glob("/usr/share/upwork/*.so").each {|f| cp f, @lib}
     Dir.glob("/usr/lib/x86_64-linux-gnu/libnss*3*").each {|f| cp f, @lib}
+    # Adding this explicitly until I find out why it's left out.
+    cp "/usr/lib/libgtkglext-x11-1.0.so.0", @lib
     cp_r "/usr/lib/x86_64-linux-gnu/nss/", @lib
   end
 
