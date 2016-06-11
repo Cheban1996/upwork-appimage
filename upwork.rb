@@ -9,10 +9,9 @@ require 'progressbar'
 include FileUtils
 
 class Upimage
-  attr_reader :debname, :foldername, :bin, :lib, :filename, :fetch
+  attr_reader :debname, :foldername, :bin, :lib, :filename
   def initialize(appname)
     @upurl="http://updates.team.odesk.com/binaries/v4_1_314_0_0bo6g5kfbj07y2x4/upwork_amd64.deb"
-    @fetch=False
     @appname=appname
     @lowcase=appname.downcase
     @foldername="#{appname}.AppDir"
@@ -152,7 +151,7 @@ system "apt-mark hold libnss3 libnss3-nssdb"
 
 puts upwork.debname
 
-upwork.download if upwork.fetch # Snag a new copy of the .deb, unless it's marked false above
+upwork.download # Snag a new copy of the .deb, unless it's marked false above
 
 system "dpkg -i #{upwork.debname}"
 
