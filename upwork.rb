@@ -54,7 +54,7 @@ class Upimage
     self.read_blacklist
     raw_libs = `ldd /usr/share/upwork/upwork`
     split_libs = raw_libs.split("\n")
-    split_libs.select! {|f| f =~ /x86_64/}
+    split_libs.select! {|f| f =~ /x86_64/ }
     lib_list = []
     split_libs.each do |f|
       mysplit = f.split
@@ -66,7 +66,8 @@ class Upimage
     lib_list.each {|f| cp f, @lib}
     Dir.glob("/usr/share/upwork/*.so").each {|f| cp f, @lib}
     Dir.glob("/usr/lib/x86_64-linux-gnu/libnss*3*").each {|f| cp f, @lib}
-    # Adding this explicitly until I find out why it's left out.
+    # Adding this explicitly for now.  Adding /usr/lib entries picks up things
+    # that cause the app to hang.
     cp "/usr/lib/libgtkglext-x11-1.0.so.0", @lib
     cp "/usr/lib/libgdkglext-x11-1.0.so.0", @lib
     cp_r "/usr/lib/x86_64-linux-gnu/nss/", @lib
