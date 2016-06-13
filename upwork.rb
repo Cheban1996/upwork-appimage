@@ -68,6 +68,7 @@ class Upimage
     Dir.glob("/usr/lib/x86_64-linux-gnu/libnss*3*").each {|f| cp f, @lib}
     # Adding this explicitly until I find out why it's left out.
     cp "/usr/lib/libgtkglext-x11-1.0.so.0", @lib
+    cp "/usr/lib/libgdkglext-x11-1.0.so.0", @lib
     cp_r "/usr/lib/x86_64-linux-gnu/nss/", @lib
   end
 
