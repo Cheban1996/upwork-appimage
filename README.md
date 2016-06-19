@@ -49,7 +49,14 @@ This does the following:
 - Copies the binary and supporting libs
 - Builds the AppImage
 
-#TODO
+# TODO
+
 - Get locales to work
 - Clean up Ruby code
 - Error handling
+
+# Patreon
+
+I figure that since it's a package for a proprietary app that we're using to make some money, what's the harm?  If having the Upwork client in this form is handy to you, please click the form and give what you can.  I chose Patreon because it's possible to do something like, say, give a dollar a month.  It truly does help encourage me to keep going on chasing a proprietary app that seems determined to march to the beat of its own drummer.
+
+https://www.patreon.com/regeya?ty=h
