@@ -105,9 +105,15 @@ system "apt-get -y upgrade"
 
 # Now, install the AppImage prerequisites
 system "apt-get -y install libfuse-dev libglib2.0-dev cmake git libc6-dev binutils fuse"
+
+puts upwork.debname
+
 upwork.download # Snag a new copy of the .deb, unless it's marked false above
+
 system "dpkg -i #{upwork.debname}"
-system "apt-get -fy install" # for now, just trust apt
+system "apt-get -fy install"
+system "apt-get -y --force-yes install libnss3=2:3.15.4-1ubuntu7 libnss3-nssdb=2:3.15.4-1ubuntu7"
+system "apt-mark hold libnss3 libnss3-nssdb"
 
 puts "Now building AppImageKit"
 
