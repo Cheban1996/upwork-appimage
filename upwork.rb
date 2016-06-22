@@ -18,7 +18,6 @@ class Upimage
     @desktop="#{@foldername}/#{@lowcase}.desktop"
     @filename="#{appname}.AppImage"
     @debname="upwork_amd64.deb"
-    @deskfile="[Desktop Entry]\nName=Upwork\nExec=upwork\nIcon=upwork.png"
     @usr ="#{@foldername}/usr"
     @bin="#{@usr}/bin"
     @lib="#{@usr}/lib"
@@ -38,10 +37,6 @@ class Upimage
     usr = @foldername + "/usr"
     mkdir(usr)
     %w{bin lib}.each {|f| mkdir "#{usr}/#{f}" }
-  end
-
-  def deskfile
-    File.open(@desktop, "w") {|f| f.write(@deskfile)}
   end
 
   def read_blacklist
@@ -123,9 +118,9 @@ Dir.chdir("#{curdir}/AppImageKit")
 Dir.chdir(curdir)
 
 upwork.makedir
-upwork.deskfile
 
 ["AppImageKit/AppRun",
+ "/usr/share/applications/upwork.desktop",
  "/usr/share/pixmaps/upwork.png"].each {|f| cp f, upwork.foldername}
 cp "/usr/share/upwork/upwork", upwork.bin
 ["pak", "bin", "dat"].each do |f|
