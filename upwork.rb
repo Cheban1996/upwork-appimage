@@ -11,7 +11,7 @@ include FileUtils
 class Upimage
   attr_reader :debname, :foldername, :bin, :lib, :filename
   def initialize(appname)
-    @upurl="http://updates.team.odesk.com/binaries/v4_1_321_0_jyypcrocn10is1qc/upwork_amd64.deb"
+    @upurl="http://updates.team.odesk.com/binaries/v4_1_337_0_vctcub5d7q8kudja/upwork_amd64.deb"
     @appname=appname
     @lowcase=appname.downcase
     @foldername="#{appname}.AppDir"
